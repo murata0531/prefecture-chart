@@ -27,12 +27,33 @@ interface compositionUrl {
 	prefCode: number,
 	url: string
 }
-function App() {
-  return (
-    <div className="App">
-      
-    </div>
-  );
+
+const App = () => {
+  const [prefectures, setPrefectures] = useState<Array<prefectures>>([])
+	const [populations, setPopulations] = useState<Array<populations>>([])
+	const resasConfig = {
+		headers: {
+			'Content-Type': 'application/json',
+			'x-api-key': process.env.REACT_APP_RESAS_API_KEY || ''
+		}
+	}
+
+  // 都道府県コード、都道府県名を取得
+  const prefUrl: string = 'https://opendata.resas-portal.go.jp/api/v1/prefectures'
+	const fetchPrefecture = async () => {
+		await axios.get(prefUrl, resasConfig).then(response => {
+			if(response.data.result) {
+				const prefList: Array<prefectures> = response.data.result.map((item: prefectures) => {
+					return {
+						prefCode: item.prefCode,
+						prefName: item.prefName,
+						isSelected: false
+					}
+				})
+				setPrefectures(prefList)
+			}
+		})
+	}
 }
 
 export default App;
