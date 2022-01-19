@@ -1,28 +1,21 @@
 import React, { useState, useEffect } from 'react'
-import './App.css'
 import Prefectures from './Prefectures'
+import Graph from './Graph'
 import axios from 'axios'
 
-// 都道府県のコードと名前を定義
 interface prefectures {
 	prefCode: number,
 	prefName: string,
 	isSelected: boolean
 }
-
-// 都道府県ごとの人口を定義
 interface populations {
 	prefCode: number,
 	data: Array<data>,
 }
-
-// 年度ごとの値を定義
 interface data {
 	year: number,
 	value: number
 }
-
-// 都道府県の人口構成APIにアクセスするURL
 interface compositionUrl {
 	prefCode: number,
 	url: string
@@ -79,19 +72,54 @@ const App = () => {
 
 	useEffect(() => {
 		fetchPrefecture()
+		// eslint-disable-next-line
 	}, [])
 
 	useEffect(() => {
 		fetchCompositions(prefectures)
+		// eslint-disable-next-line
 	}, [prefectures])
+
+	const ShowGraph = () => {
+		const isSelected = prefectures.find((prefecture: prefectures) => prefecture.isSelected)
+		if (isSelected) {
+			return (
+				<Graph
+					prefectures={prefectures}
+					populations={populations}
+				/>
+			)
+		}
+		return <></>
+	}
+
+	const ShowContents = () => {
+		if (prefectures.length && populations.length) {
+			return (
+				<main className="App-main">
+					<Prefectures
+						prefectures={prefectures}
+						setPrefectures={setPrefectures}
+					/>
+					<ShowGraph />
+				</main>
+			)
+		}
+		return (
+			<main className="App-main-loading">
+				<h2>データ取得中...</h2>
+			</main>
+		)
+	}
 
 	return (
 		<div className="App">
-		  <header className="App-header">
-			<h1 className="App-header-title">都道府県別人口推移</h1>
-		  </header>
+			<header className="App-header">
+				<h1 className="App-header-title">都道府県別人口推移</h1>
+			</header>
+			<ShowContents />
 		</div>
-	  )
+	)
 }
 
-export default App;
+export default App
