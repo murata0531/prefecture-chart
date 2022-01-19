@@ -29,7 +29,7 @@ interface compositionUrl {
 }
 
 const App = () => {
-  const [prefectures, setPrefectures] = useState<Array<prefectures>>([])
+	const [prefectures, setPrefectures] = useState<Array<prefectures>>([])
 	const [populations, setPopulations] = useState<Array<populations>>([])
 	const resasConfig = {
 		headers: {
@@ -38,11 +38,11 @@ const App = () => {
 		}
 	}
 
-  // 都道府県コード、都道府県名を取得
-  const prefUrl: string = 'https://opendata.resas-portal.go.jp/api/v1/prefectures'
+	// 都道府県コード、都道府県名を取得
+	const prefUrl: string = 'https://opendata.resas-portal.go.jp/api/v1/prefectures'
 	const fetchPrefecture = async () => {
 		await axios.get(prefUrl, resasConfig).then(response => {
-			if(response.data.result) {
+			if (response.data.result) {
 				const prefList: Array<prefectures> = response.data.result.map((item: prefectures) => {
 					return {
 						prefCode: item.prefCode,
@@ -55,8 +55,8 @@ const App = () => {
 		})
 	}
 
-  // 人口構成を取得
-  const fetchCompositions = async (prefectures: Array<prefectures>) => {
+	// 人口構成を取得
+	const fetchCompositions = async (prefectures: Array<prefectures>) => {
 		const compositionUrls: Array<compositionUrl> = []
 		for (let i = 0; i < prefectures.length; i++) {
 			const prefCode = i + 1
@@ -66,7 +66,7 @@ const App = () => {
 			})
 		}
 		const compositions: Array<populations> = []
-		for (let compositionUrl of compositionUrls ) {
+		for (let compositionUrl of compositionUrls) {
 			await axios.get(compositionUrl.url, resasConfig).then(response => {
 				compositions.push({
 					prefCode: compositionUrl.prefCode,
@@ -76,6 +76,14 @@ const App = () => {
 		}
 		setPopulations(compositions)
 	}
+
+	useEffect(() => {
+		fetchPrefecture()
+	}, [])
+
+	useEffect(() => {
+		fetchCompositions(prefectures)
+	}, [prefectures])
 }
 
 export default App;
