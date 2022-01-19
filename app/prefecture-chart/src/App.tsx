@@ -22,7 +22,7 @@ interface data {
 	value: number
 }
 
-// APIにアクセスするURL
+// 都道府県の人口構成APIにアクセスするURL
 interface compositionUrl {
 	prefCode: number,
 	url: string
@@ -53,6 +53,28 @@ const App = () => {
 				setPrefectures(prefList)
 			}
 		})
+	}
+
+  // 人口構成を取得
+  const fetchCompositions = async (prefectures: Array<prefectures>) => {
+		const compositionUrls: Array<compositionUrl> = []
+		for (let i = 0; i < prefectures.length; i++) {
+			const prefCode = i + 1
+			compositionUrls.push({
+				prefCode: prefCode,
+				url: 'https://opendata.resas-portal.go.jp/api/v1/population/composition/perYear?cityCode=-&prefCode=' + prefCode
+			})
+		}
+		const compositions: Array<populations> = []
+		for (let compositionUrl of compositionUrls ) {
+			await axios.get(compositionUrl.url, resasConfig).then(response => {
+				compositions.push({
+					prefCode: compositionUrl.prefCode,
+					data: response.data.result.data[0].data
+				})
+			})
+		}
+		setPopulations(compositions)
 	}
 }
 
