@@ -2,13 +2,21 @@
 
 Resas APIからデータを取得して都道府県別人口推移をグラフ表示するアプリ
 
+herokuにて後悔しています↓
+
+`https://sleepy-plains-15496.herokuapp.com`
+
 # 環境
 
 docker: 20.10.7
 
 docker-compose:  1.29.2
 
-node: 16
+node: 16.13.2
+
+yarn: 1.22.15
+
+npm: 8.1.2
 
 node-sass: 7.0.1
 
@@ -18,7 +26,7 @@ typescript: 4.5.4
 
 axios: 0.25.0
 
-highcharts: ^9.3.2
+highcharts: 9.3.2
 
 eslint-config-prettier: 8.3.0
 
