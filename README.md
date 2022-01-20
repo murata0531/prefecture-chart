@@ -4,7 +4,9 @@ Resas APIからデータを取得して都道府県別人口推移をグラフ�
 
 # 環境
 
-docker
+docker: 20.10.7
+
+docker-compose:  1.29.2
 
 node: 16
 
