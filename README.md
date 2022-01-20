@@ -1,8 +1,8 @@
 # prefecture-chart
 
-Resas APIからデータを取得して都道府県別人口推移をグラフ表示するアプリ
+Resas APIからデータを取得して都道府県別人口推移グラフを表示するアプリ
 
-herokuにて後悔しています↓
+このアプリケーションはherokuにて公開しています↓
 
 `https://sleepy-plains-15496.herokuapp.com`
 
@@ -52,7 +52,7 @@ docker-compose run --rm node sh -c "cd prefecture-chart && npm install {イン�
 ```
 $ make lint-prettier
 ```
-自動で fix 実行
+自動修正
 ```
 $ make fix-prettier
 ```
