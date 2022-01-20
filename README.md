@@ -31,20 +31,24 @@ highcharts: 9.3.2
 eslint-config-prettier: 8.3.0
 
 # 環境の構築
+事前にRESAS-API(`https://opendata.resas-portal.go.jp/`) のページからユーザ登録をし、APIキーを取得
 
-① RESAS-API(`https://opendata.resas-portal.go.jp/`) のページからユーザ登録をし、APIキーを取得
-
+dockerコンテナ立ち上げ
 ```
+$ git clone https://github.com/murata0531/prefecture-chart
+
+$ cd prefecture-chart/
+
 $ make init
 ```
-`app/prefecture-chart`配下に`.env` ファイルが作成されているので　①で取得したAPIキーを貼り付ける
+`app/prefecture-chart`配下に`.env` ファイルが作成されているので　事前に取得したAPIキーを貼り付ける
 
 
 上記を実行したら `http://localhost:3000` にアクセス
 
 # モジュールをインストールしたくなったら
 ```
-docker-compose run --rm node sh -c "cd prefecture-chart && npm install {インストールしたいモジュール}"
+$ docker-compose run --rm node sh -c "cd prefecture-chart && npm install {インストールしたいモジュール}"
 ```
 
 # prettierでコードを検査する
