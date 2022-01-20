@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import './App.scss'
-import Prefectures from './Prefectures'
-import Graph from './Graph'
+import Prefectures from './components/Prefectures'
+import Graph from './components/Graph'
 import axios from 'axios'
 
 interface prefectures {
