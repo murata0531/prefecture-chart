@@ -1,5 +1,7 @@
 import React from 'react'
+import './Prefectures.scss'
 import PrefecturesItem from './PrefecturesItem'
+
 interface prefectures {
 	prefCode: number,
 	prefName: string,
