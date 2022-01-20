@@ -1,31 +1,29 @@
-import React from 'react'
-import '../styles/PrefecturesItem.scss'
+import React from "react";
+import "../styles/PrefecturesItem.scss";
 
 interface prefectures {
-	prefCode: number,
-	prefName: string,
-	isSelected: boolean
+  prefCode: number;
+  prefName: string;
+  isSelected: boolean;
 }
-const PrefecturesItem = (
-	{
-		prefecture,
-		togglePref
-	}: {
-		prefecture: prefectures,
-		togglePref: any
-	}
-) => {
-	return(
-		<label>
-			<input
-				type="checkbox"
-				checked={prefecture.isSelected}
-				id={prefecture.prefName}
-				onChange={togglePref}
-			/>
-			{prefecture.prefName}
-		</label>
-	)
-}
+const PrefecturesItem = ({
+  prefecture,
+  togglePref,
+}: {
+  prefecture: prefectures;
+  togglePref: any;
+}) => {
+  return (
+    <label>
+      <input
+        type="checkbox"
+        checked={prefecture.isSelected}
+        id={prefecture.prefName}
+        onChange={togglePref}
+      />
+      {prefecture.prefName}
+    </label>
+  );
+};
 
-export default PrefecturesItem
+export default PrefecturesItem;
