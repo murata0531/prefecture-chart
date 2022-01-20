@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import './Graph.scss'
+import '../styles/Graph.scss'
 import * as Highcharts from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
 
