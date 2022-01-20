@@ -60,18 +60,31 @@ const Graph = (
 	}, [populations])
 	const options: Highcharts.Options = {
 		title: {
-			text: '都道府県別人口推移'
+			text: '都道府県別人口推移',
+			margin: 50
 		},
 		yAxis: {
 			title: {
-				text: '人口(人)'
-			}
+				text: '人口数',
+				align: 'high',
+				rotation: 0,
+				x: 50,
+				y: -25
+			},
 		},
 		xAxis: {
 			categories: years,
 			title: {
-				text: '年度(年度)'
-			}
+				text: '年度'
+			},
+		},
+		legend: {
+			layout: 'vertical',
+			align: 'right',
+			verticalAlign: 'middle',
+			x: -80,
+			y: 0,
+			borderWidth: 0
 		},
 		series: series
 	}
