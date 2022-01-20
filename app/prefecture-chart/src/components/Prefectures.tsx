@@ -1,6 +1,6 @@
-import React from "react";
-import "../styles/Prefectures.scss";
-import PrefecturesItem from "../components/PrefecturesItem";
+import React from 'react'
+import '../styles/Prefectures.scss'
+import PrefecturesItem from '../components/PrefecturesItem'
 
 interface prefectures {
   prefCode: number;
@@ -9,22 +9,22 @@ interface prefectures {
 }
 const Prefectures = ({
   prefectures,
-  setPrefectures,
+  setPrefectures
 }: {
   prefectures: Array<prefectures>;
   setPrefectures: any;
 }) => {
   const togglePref = (event: any) => {
-    const target = event.target;
+    const target = event.target
     const clickedTarget = prefectures.find(
       (prefecture: prefectures) => prefecture.prefName === target.id
-    );
+    )
     if (clickedTarget) {
-      clickedTarget.isSelected = !clickedTarget.isSelected;
+      clickedTarget.isSelected = !clickedTarget.isSelected
     }
-    const toggledPrefectures = prefectures.map((prefecture) => prefecture);
-    setPrefectures(toggledPrefectures);
-  };
+    const toggledPrefectures = prefectures.map((prefecture) => prefecture)
+    setPrefectures(toggledPrefectures)
+  }
 
   return (
     <div className="prefecture">
@@ -38,11 +38,11 @@ const Prefectures = ({
                 togglePref={togglePref}
               />
             </li>
-          );
+          )
         })}
       </ul>
     </div>
-  );
-};
+  )
+}
 
-export default Prefectures;
+export default Prefectures

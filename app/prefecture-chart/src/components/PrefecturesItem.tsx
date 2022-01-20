@@ -1,5 +1,5 @@
-import React from "react";
-import "../styles/PrefecturesItem.scss";
+import React from 'react'
+import '../styles/PrefecturesItem.scss'
 
 interface prefectures {
   prefCode: number;
@@ -8,7 +8,7 @@ interface prefectures {
 }
 const PrefecturesItem = ({
   prefecture,
-  togglePref,
+  togglePref
 }: {
   prefecture: prefectures;
   togglePref: any;
@@ -23,7 +23,7 @@ const PrefecturesItem = ({
       />
       {prefecture.prefName}
     </label>
-  );
-};
+  )
+}
 
-export default PrefecturesItem;
+export default PrefecturesItem
